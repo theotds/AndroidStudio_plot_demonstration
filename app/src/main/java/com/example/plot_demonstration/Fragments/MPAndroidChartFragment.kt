@@ -66,7 +66,7 @@ class MPAndroidChartFragment(val data: DataUtil) : Fragment() {
         lineDataSet2.setDrawFilled(true)
         val lineData2 = LineData(lineDataSet2)
         lineChart2.data = lineData2
-
+        lineChart2.setPinchZoom(true)
 
         lineChart2.invalidate() // Refresh the chart
 

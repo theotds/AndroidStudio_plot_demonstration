@@ -1,17 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_gravity="center"
-    >
+    android:padding="4dp">
 
     <com.patrykandpatrick.vico.views.chart.ChartView
-        android:id="@+id/chart_view"
+        android:id="@+id/chartViewBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:chart="column"
+        app:showStartAxis="true"
+        app:showBottomAxis="true" />
+
+    <com.patrykandpatrick.vico.views.chart.ChartView
+        android:id="@+id/chartViewLine"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         app:chart="line"
         app:showStartAxis="true"
         app:showBottomAxis="true" />
 
-</FrameLayout>
+    <!-- Assuming Vico supports some kind of polygonal or web chart -->
+    <com.patrykandpatrick.vico.views.chart.ChartView
+        android:id="@+id/chartline2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:chart="line"
+        app:showStartAxis="true"
+        app:showBottomAxis="true" />
+</LinearLayout>
