@@ -22,11 +22,11 @@ class DataUtil {
         return List(7) { 20f + (Math.random() * 15).toFloat() }
     }
 
-    fun setDailySalesData(): List<Float> {
+    private fun setDailySalesData(): List<Float> {
         return List(30) { (50 + Math.random() * 50).toFloat() }  // Random sales between 50 and 100 items per day
     }
 
-    fun setDailyRevenueData(): List<Float> {
+    private fun setDailyRevenueData(): List<Float> {
         return List(30) { (1000.0 + Math.random() * 500.0).toFloat() }  // Random revenue between $1000 and $1500 per day
     }
 }

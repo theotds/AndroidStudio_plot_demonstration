@@ -24,7 +24,6 @@
         app:showStartAxis="true"
         app:showBottomAxis="true" />
 
-    <!-- Assuming Vico supports some kind of polygonal or web chart -->
     <com.patrykandpatrick.vico.views.chart.ChartView
         android:id="@+id/chartline2"
         android:layout_width="match_parent"

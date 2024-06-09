@@ -1,5 +1,6 @@
 package com.example.plot_demonstration.Fragments
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +19,6 @@ class VicoChartFragment(val data: DataUtil) : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_vico_chart, container, false)
-
 
         // Bar Chart Setup
         val chartViewBar = view.findViewById<ChartView>(R.id.chartViewBar)
