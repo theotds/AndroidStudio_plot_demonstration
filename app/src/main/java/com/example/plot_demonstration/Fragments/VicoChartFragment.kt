@@ -20,23 +20,25 @@ class VicoChartFragment(val data: DataUtil) : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_vico_chart, container, false)
 
-        // Bar Chart Setup
-        val chartViewBar = view.findViewById<ChartView>(R.id.chartViewBar)
+
         val salesData = data.getDailySalesData()
         val barChartEntryModel = entryModelOf(*salesData.toTypedArray())
+        val chartViewBar = view.findViewById<ChartView>(R.id.chartViewBar)
         chartViewBar.setModel(barChartEntryModel)
 
-        // Line Chart Setup
-        val chartViewLine = view.findViewById<ChartView>(R.id.chartViewLine)
+
         val temperatureData = data.getTemperatureData()
         val lineChartEntryModel = entryModelOf(*temperatureData.toTypedArray())
+        val chartViewLine = view.findViewById<ChartView>(R.id.chartViewLine)
         chartViewLine.setModel(lineChartEntryModel)
 
-        // Web Chart Setup (Simulating Radar)
-        val chartViewWeb = view.findViewById<ChartView>(R.id.chartline2)
+
         val revenueData = data.getDailyRevenueData()
         val line2ChartEntryModel = entryModelOf(*revenueData.toTypedArray())
+        val chartViewWeb = view.findViewById<ChartView>(R.id.chartline2)
         chartViewWeb.setModel(line2ChartEntryModel)
+
+
         return view
     }
 }

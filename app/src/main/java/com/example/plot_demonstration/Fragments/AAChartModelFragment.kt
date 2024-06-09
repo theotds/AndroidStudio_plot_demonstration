@@ -21,30 +21,35 @@ class AAChartModelFragment(val data: DataUtil) : Fragment() {
         val view = inflater.inflate(R.layout.fragment_aachart_model, container, false)
 
 
-        // Setup the first chart for Sales Data
-        val aaChartView1 = view.findViewById<AAChartView>(R.id.aaChartView1)
-        val aaChartModel1 =
+
+        val barChart =
             AAChartModel().chartType(AAChartType.Column).title("Daily Sales").series(
                 arrayOf(
                     AASeriesElement().name("Sales").data(data.getDailySalesData().toTypedArray())
                 )
             )
-        aaChartView1.aa_drawChartWithChartModel(aaChartModel1)
+        val barChartView = view.findViewById<AAChartView>(R.id.aaChartView1)
+        barChartView.aa_drawChartWithChartModel(barChart)
 
-        // Setup the second chart for Temperature Data
-        val aaChartView2 = view.findViewById<AAChartView>(R.id.aaChartView2)
-        val aaChartModel2 =
+
+
+
+
+        val splineChart =
             AAChartModel().chartType(AAChartType.Areaspline).title("Daily Temperature").series(
                 arrayOf(
                     AASeriesElement().name("Temperature")
                         .data(data.getTemperatureData().toTypedArray())
                 )
             )
-        aaChartView2.aa_drawChartWithChartModel(aaChartModel2)
+        val splineChartView = view.findViewById<AAChartView>(R.id.aaChartView2)
+        splineChartView.aa_drawChartWithChartModel(splineChart)
 
-        val aaChartView3 = view.findViewById<AAChartView>(R.id.aaChartView3)
 
-        val aaChartModel3 =
+
+
+
+        val areaChart =
             AAChartModel().chartType(AAChartType.Area).title("POPULARITY OF PROGRAMMING LANGUAGE")
                 .categories(
                     arrayOf(
@@ -71,12 +76,14 @@ class AAChartModelFragment(val data: DataUtil) : Fragment() {
                         )
                     )
                 )
+        val areaChartView = view.findViewById<AAChartView>(R.id.aaChartView3)
+        areaChartView.aa_drawChartWithChartModel(areaChart)
 
-        aaChartView3.aa_drawChartWithChartModel(aaChartModel3)
 
-        // Setup the third chart for Radar-like Data
-        val aaChartView4 = view.findViewById<AAChartView>(R.id.aaChartView4)
-        val aaChartModel4 =
+
+
+
+        val radarChart =
             AAChartModel().chartType(AAChartType.Pie).title("Performance Analysis").series(
                 arrayOf(
                     AASeriesElement().name("Elements").data(
@@ -85,12 +92,12 @@ class AAChartModelFragment(val data: DataUtil) : Fragment() {
                             arrayOf("B", 0.10),
                             arrayOf("C", 0.20),
                             arrayOf("D", 0.30),
-
                             )
                     )
                 )
             )
-        aaChartView4.aa_drawChartWithChartModel(aaChartModel4)
+        val radarChartView = view.findViewById<AAChartView>(R.id.aaChartView4)
+        radarChartView.aa_drawChartWithChartModel(radarChart)
 
         return view
     }

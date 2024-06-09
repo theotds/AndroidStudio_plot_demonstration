@@ -30,32 +30,37 @@ class MPAndroidChartFragment(val data: DataUtil) : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_mpandroid_chart, container, false)
 
-        // Initialize the BarChart for Daily Sales
-        val barChart = view.findViewById<BarChart>(R.id.barChart)
+
+
+
         val dailySalesData = data.getDailySalesData().mapIndexed { index, value ->
-            BarEntry(index.toFloat(), value.toFloat())
+            BarEntry(index.toFloat(), value)
         }
         val barDataSet = BarDataSet(dailySalesData, "Daily Sales")
         barDataSet.color = Color.BLUE
-        val barData = BarData(barDataSet)
-        barChart.data = barData
-        barChart.invalidate() // Refresh the chart
 
-        // Initialize the LineChart for Temperature
-        val lineChart1 = view.findViewById<LineChart>(R.id.lineChart1)
+        val barChartView = view.findViewById<BarChart>(R.id.barChart)
+        barChartView.data = BarData(barDataSet)
+        barChartView.invalidate() // Refresh the chart
+
+
+
+
         val temperatureData = data.getTemperatureData().mapIndexed { index, value ->
-            Entry(index.toFloat(), value.toFloat())
+            Entry(index.toFloat(), value)
         }
         val lineDataSet1 = LineDataSet(temperatureData, "Daily Temperature")
         lineDataSet1.color = Color.RED
-        val lineData1 = LineData(lineDataSet1)
-        lineChart1.data = lineData1
-        lineChart1.invalidate() // Refresh the chart
 
-        // Initialize the LineChart for Daily Revenue
-        val lineChart2 = view.findViewById<LineChart>(R.id.lineChart2)
+        val lineChart1View = view.findViewById<LineChart>(R.id.lineChart1)
+        lineChart1View.data = LineData(lineDataSet1)
+        lineChart1View.invalidate() // Refresh the chart
+
+
+
+
         val dailyRevenueData = data.getDailyRevenueData().mapIndexed { index, value ->
-            Entry(index.toFloat(), value.toFloat())
+            Entry(index.toFloat(), value)
         }
         val lineDataSet2 = LineDataSet(dailyRevenueData, "Daily Revenue")
         lineDataSet2.color = Color.BLACK
@@ -64,13 +69,16 @@ class MPAndroidChartFragment(val data: DataUtil) : Fragment() {
         lineDataSet2.lineWidth = 2f
         lineDataSet2.circleRadius = 5f
         lineDataSet2.setDrawFilled(true)
-        val lineData2 = LineData(lineDataSet2)
-        lineChart2.data = lineData2
-        lineChart2.setPinchZoom(true)
 
-        lineChart2.invalidate() // Refresh the chart
+        val lineChart2View = view.findViewById<LineChart>(R.id.lineChart2)
+        lineChart2View.data = LineData(lineDataSet2)
+        lineChart2View.setPinchZoom(true)
+        lineChart2View.invalidate() // Refresh the chart
 
-        val radarChart = view.findViewById<RadarChart>(R.id.radarChart)
+
+
+
+
         val entries = listOf(
             RadarEntry(120f),
             RadarEntry(150f),
@@ -80,19 +88,16 @@ class MPAndroidChartFragment(val data: DataUtil) : Fragment() {
             RadarEntry(130f),
             RadarEntry(170f)
         )
-
         val radarDataSet = RadarDataSet(entries, "Performance")
         radarDataSet.color = Color.RED
         radarDataSet.fillColor = Color.BLUE
         radarDataSet.setDrawFilled(true)
         radarDataSet.lineWidth = 2f
 
-        val radarData = RadarData(radarDataSet)
-        radarChart.data = radarData
-
+        val radarChart = view.findViewById<RadarChart>(R.id.radarChart)
+        radarChart.data = RadarData(radarDataSet)
         radarChart.description.isEnabled = false
 
-        // Style the radar chart
         val xAxis = radarChart.xAxis
         xAxis.textSize = 9f
         xAxis.yOffset = 0f
@@ -103,7 +108,6 @@ class MPAndroidChartFragment(val data: DataUtil) : Fragment() {
         yAxis.setLabelCount(6, true)
         yAxis.textSize = 9f
         yAxis.setDrawLabels(false)
-
         radarChart.invalidate() // Refresh the chart
 
 
